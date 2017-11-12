@@ -1,5 +1,5 @@
 module.exports = {
-    "name": "raynor",
+    "name": "raynor-chai",
     "mode": "modules",
     "module": "common-js",
     "exclude": "**/*-test.ts",
