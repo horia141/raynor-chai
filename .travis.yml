@@ -1,0 +1,29 @@
+language: node_js
+
+node_js:
+- "node"
+
+cache:
+  directories:
+  - node_modules
+
+env:
+  global:
+  # NPM_TOKEN
+  - secure: "2p0jR4yOLqfeeu+uR2GLm3nEzE+5Veam6wPrBGrnuPTl8BXXqBCxlyZHKqUKdsMocErnrb8EePHTGO5bEasgxDqRDnJzBmHBrovxgFVoBDlODN/7H0UAsJ3ilntH208D1IGrc74Nxg8hLQ4g7j/43lTjJHjPGhvkvsnX+p9LCzeteqvjRA8IfbXfKyUf394xFAHwUxN3NrQ5lg15jbRY47ebj82lXTFj34rEu9JPpRz7vkEboITXvBdjKRSSxIUONxxpGckQU+INVhhZr+p5Cmcr7kfckSaDEk8Xd9cuQVLqI9E2ykYt5Uo5mj6TFTMBBWPkV8ndX368IZrMMzOIBTEt0IlaoDy1DbY46dBNqMc/RJGdWgpOUx3kktGjNZ1dMdP0foaA1HVln6jmx3jA/x9Go8h6uNiVm58shNXlYl+9Srf7PwtdWejUJw1Hj2vGDFrktGsY+W9RJiPckR3j9mMeeKdUsLOCEC/t4NfB5S/8yGdM9gsJNqcNJTMaDX6EMOJOpGmN3pZdCo+3fucY34nqcZPWEjKdt7ceBcTAL9PFs0rK/SQx7YJQcf3BpWgSDpOrN1pB4lJihBjyj7rFB84elPad009UBwlY4713BRE35cM7jwvj+0b7wnhCH4M+YHE/bGalVyGZoIqWtP4XjT4DS+HY3TOaCVj03qje6lI="
+
+install:
+- npm install --progress=false
+
+script:
+- npm run test
+
+after_success:
+- npm run push-coverage-to-codecov
+
+deploy:
+- provider: script
+  skip_cleanup: true
+  script: $(npm bin)/prepack-publish
+  on:
+    tags: true
