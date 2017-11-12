@@ -1,6 +1,6 @@
 {
   "name": "raynor-chai",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A chai extension to allow interop with Raynor",
   "author": "Horia Coman <horia141@gmail.com>",
   "scripts": {
